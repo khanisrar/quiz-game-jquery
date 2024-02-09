@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain Blast</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    .container {
+      background-image: url("images/6.jpg");
+      width: 100vw;
+      height: 100vh;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+    }
+
+    nav {
+      background: rgba(255, 235, 205, 0.5);
+    }
+
+    nav h1 {
+      color: #000;
+      font-size: 40px;
+      padding: 20px;
+    }
+
+    section h3 {
+      color: #fff;
+      font-size: 30px;
+      margin: 30px 0;
+    }
+
+    section .qContainer {
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    section .qContainer img {
+      margin-top: 10px;
+    }
+
+    section input {
+      padding: 13px;
+      font-size: 20px;
+      margin-top: 50px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    section button {
+      display: flex;
+      margin: 0 auto;
+      margin-top: 50px;
+      font-size: 25px;
+      background: #444;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 25px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 400px) {
+      section .qContainer {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      section .qContainer img {
+        margin-top: 10px;
+        width: 300px;
+      }
+
+      section input {
+        padding: 10px;
+        font-size: 17px;
+        margin-top: 30px;
+      }
+
+      section button {
+        margin-top: 30px;
+        font-size: 20px;
+        padding: 7px 20px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      section .qContainer {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      section .qContainer img {
+        margin-top: 10px;
+        /* width: 250px; */
+        width: 80%;
+      }
+
+      section input {
+        padding: 10px;
+        font-size: 15px;
+        margin-top: 40px;
+      }
+
+      section button {
+        margin-top: 30px;
+        font-size: 20px;
+        padding: 7px 20px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      section .qContainer {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      section .qContainer img {
+        margin-top: 10px;
+        /* width: 250px; */
+        width: 90%;
+      }
+
+      section input {
+        padding: 10px;
+        font-size: 13px;
+        margin-top: 30px;
+      }
+
+      section button {
+        margin-top: 30px;
+        font-size: 17px;
+        padding: 7px 20px;
+      }
+    }
+
+    .correctAnsContainer {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: -200%;
+      transition: 0.5s;
+    }
+
+
+    .correctAnsContainer2 {
+      box-sizing: border-box;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0%;
+      background-color: #fff;
+      transition: 0.5s;
+    }
+
+    .wrongAnsContainer {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: -200%;
+      transition: 0.5s;
+    }
+
+
+    .wrongAnsContainer2 {
+      box-sizing: border-box;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0%;
+      background-color: #fff;
+      transition: 0.5s;
+    }
+
+    .gameOverContainer {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: -200%;
+      transition: 0.5s;
+    }
+
+
+    .gameOverContainer2 {
+      box-sizing: border-box;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0%;
+      background-color: #fff;
+      transition: 0.5s;
+    }
+
+    .gameOverContainer h2 {
+      font-size: 50px;
+    }
+
+    .gameOverContainer h3 {
+      color: #000;
+    }
+
+    .gameOverContainer a {
+      font-size: 25px;
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .c-ans {
+      margin-bottom: 50px;
+      font-size: 50px;
+    }
+
+    .w-ans {
+      margin-bottom: 50px;
+      font-size: 50px;
+    }
+
+    .name {
+      font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        background-image: url("images/1.jpg");
+      }
+
+      .gameOverContainer h2 {
+        font-size: 40px;
+      }
+
+      .gameOverContainer h3 {
+        color: #000;
+      }
+
+      .gameOverContainer a {
+        font-size: 25px;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .c-ans {
+        margin-bottom: 50px;
+        font-size: 40px;
+      }
+
+      .w-ans {
+        margin-bottom: 50px;
+        font-size: 40px;
+      }
+
+      .name {
+        font-size: 30px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <h1>Brain Blast</h1>
+    </nav>
+
+    <section>
+      <h3 id="quesNumber"></h3>
+      <div class="qContainer">
+        <img class="questions" src="./images/ques/que1" alt="" />
+      </div>
+      <input id="enter_ans" type="text" placeholder="Enter Answer Here" />
+      <button id="sub_btn">Submit</button>
+      <div class="correctAnsContainer">
+        <h2 class="c-ans">Correct Answer</h2>
+        <div class="content">
+          <h1 class="name"></h1>
+          <video width="320" height="240" loop autoplay muted>
+            <source src="./images/banana.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <div class="wrongAnsContainer">
+        <h2 class="w-ans">Wrong Answer</h2>
+        <div class="content">
+          <h1 class="name"></h1>
+          <video width="320" height="240" loop autoplay muted>
+            <source src="./images/banana-wrong.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <div class="gameOverContainer">
+        <h2>Game Over</h2>
+        <h3>Well Done! <br> You are genius</h3>
+        <a href="/">Play Again</a>
+      </div>
+    </section>
+
+  </div>
+  <script src="./js/code.jquery.com_jquery-3.7.0.min.js"></script>
+  <script src="./js/custom.js"></script>
+</body>
+
+</html>
